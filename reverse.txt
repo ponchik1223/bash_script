@@ -1,0 +1,10 @@
+#!/bin/bash 
+find -maxdepth 1 -type f -executable -print 
+trap 'find $1 -maxdepth 1 -type f -executable -print|xargs chmod ugo-x' 2 
+trap 'find $1 -maxdepth 1 -type f ! -executable -print|xargs chmod ugo-x' 3 
+trap 'exit 1' 15 
+trap '' 1 4 5 6 8 9 11 13 17 18 
+while : 
+do 
+sleep 100 
+done
