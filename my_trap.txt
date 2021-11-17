@@ -1,0 +1,12 @@
+#!/bin/bash
+prov=true
+trap 'echo;echo "VVedi key"; read key' 2
+while $prov
+do
+echo "kek"
+sleep 2
+if (test "$key" == "$answer")
+then
+prov=false
+fi
+done
