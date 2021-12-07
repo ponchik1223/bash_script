@@ -1,0 +1,34 @@
+#!/bin/bash
+if (($# == 0));
+    then echo "vvedi arg";
+fi
+if !(test -d bufrm );
+    then mkdir bufrm;
+fi
+case $1 in
+    -l)
+    res=`ls bufrm`;
+    echo $res;
+    ;;
+    -d)
+    rm /home2/admin13/Lab2/bufrm/*;
+    echo "vse";
+    ;;
+    -r)
+    rmdir /home2/admin13/Lab2/bufrm;
+    echo "ok";
+    ;;
+    -b)
+    mv /home2/admin13/Lab2/bufrm/* /home2/admin13/Lab2/;
+    echo "i vse vytashil";
+    ;;
+    *)
+    if (test -f $1);
+    then mv /home2/admin13/Lab2/$1 bufrm;
+    echo "vse";
+    else echo "takogo net, poprobyu -l,-d,-r";
+    fi;
+    ;;
+esac
+#lab work
+

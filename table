@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "vvedi"
+read x
+let pot=0
+echo "table_mult $x x $x"
+for ((i = 1; i <= $x; i++));
+    do
+    for ((j = 1; j <= $x; j++))
+        do
+           let pot=$i*$j
+           echo -en "$pot  "
+	done	
+        echo ""
+    done

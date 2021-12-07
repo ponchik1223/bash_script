@@ -1,0 +1,28 @@
+#!/bin/bash
+if (($# != 2)); then
+echo "ispolzui -d|-f|-r|-c|-n|-m"
+exit
+fi
+case $1 in
+    -d)find $2 -type d -empty -delete; 2>/dev/null
+    echo "vse"
+    ;;
+    -f)find $2 -type f -empty -delete; 2>/dev/null
+    echo "foul -"
+    ;;
+    -r)find $2 -type d -exec rm -r {} \; 2>/dev/null
+    echo "da"
+    ;;
+    -c)find $2 -name '*' -exec rm -r {} \; 2>/dev/null
+    echo "udalil"
+    ;;
+    -n)find $2 -type f -ok rm {} \;
+    echo "gotovo"
+    ;;
+    -m)echo "kuda"
+    read x
+    find $2 -maxdepth 1 \( -type d -o -type f \) -exec mv {} $x/ \;2>/dev/null
+    ;;
+    -*)
+    echo "net"
+    ;;

@@ -1,0 +1,34 @@
+#!/bin/bash
+while :
+do
+case $2 in
+        -n)
+        echo "vvedite name proc"
+        read name
+        x=`pgrep -f $name`
+        kill $1 $x
+        exit
+        ;;
+        -p)
+        echo "vvedi PID proc"
+        read pid
+        kill $1 $pid
+        exit
+        ;;
+        -u)
+        echo "vvedi username"
+        read user
+        username2=`ps -ef| awk -v var="${user}" '$1 == var {print $2}'`
+        for pid in `echo $username2`
+                do
+                        kill $1 $pid
+                done
+        exit
+        ;;
+        -j)
+        echo "vvedite job"
+        read job
+        kill $1 %$job
+        ;;
+esac
+done

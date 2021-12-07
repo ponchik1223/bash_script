@@ -1,0 +1,22 @@
+#!/bin/bash
+if(($# < 1));
+    then echo;
+fi
+
+case $1 in
+    -n)
+    res=`who|wc -l`
+    echo "chislo rabotygi:$res"
+    ;;
+    -b)
+    res=`cat /etc/passwd|awk -F: '$2==""'|wc -l`
+    echo "chislo bad boy:$res"
+    ;;
+    -g)
+    res=`cat /etc/passwd|awk -F: '$2!=""'|wc -l`
+    echo "vot $res"
+    ;;
+    *)
+    echo "$1 takogo net, est -n,-b,-g"
+    ;;
+esac 

@@ -1,0 +1,34 @@
+#!/bin/bash
+vvod()
+{
+    echo "vvedi predlohenie"
+    read x;
+    n=`echo -n $x|wc -m`
+}
+
+case $1 in
+    -e)
+	vvod;
+	passwd=""
+    	for (( i=0;i<$n;i++ ))
+    	do
+        ch=`echo ${x:$i:1}`
+        a=`perl -CA -le 'print ord shift' $ch`
+        passwd=$passwd$a
+    	done
+    	echo $passwd
+    	;;
+    -d)
+	vvod;
+	passwd=''
+    	i=0
+    	while [ $i -lt $n ]
+    	do
+      	ch=`echo ${x:$i:2}`
+        a=`perl -CS -le 'print chr shift' $ch`
+        passwd=$passwd$a
+        i=$(( $i+2 ))
+    	done
+    	echo $passwd
+    	;;
+esac

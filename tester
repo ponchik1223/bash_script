@@ -1,0 +1,39 @@
+#!/bin/bash
+echo "Текущая дата - это команда:";
+pot=0;
+pot1=0;
+select var in  "who" "pwd"  "date" "cal" "exit"; do
+if (test "$var" == "date");
+    then echo "da";
+    let pot1+=1;
+    echo "command: `$var`"
+break;
+else
+    if (test "$var" == "exit");
+        then break;
+    else
+    echo "net";
+    echo "command: `$var`"
+    let pot+=1;
+    fi
+fi
+done
+if ([ "$var" == "exit" ] || (( "$pot1" == "0" )));
+    then echo "вы не дали правильный ответ, оценка 2!"
+elif [ "$pot1" == "1" ]
+    then echo "колличество попыток:$pot";
+    case $pot in
+    0)
+    echo "оценка: 5"
+    ;;
+    1)
+    echo "оценка :4"
+    ;;
+    2)
+    echo "оценка: 3"
+    ;;
+    *)
+    echo "оценка: 2"
+    ;;
+    esac
+fi
